@@ -27,6 +27,8 @@ class Tests
 	insert.generate_random_hex
 	
 	a = "orig | (insert << #{shift})"
+	
+	input = "int orig = #{orig};\nint insert = #{insert};\nint a = #{a};\nprintf(\"%d\\n\", a);"
 
     end
 
@@ -39,11 +41,13 @@ class Tests
 	insert = Generator.new()
 	insert.generate_random_hex
 	
-	a = orig | (insert << #{shift})
+	a = "orig | (insert << #{shift})"
 	
-	b = orig | (insert << #{shift})
+	b = "orig | (insert << #{shift})"
 	
 	andd = "a & b"
+	
+	input = "int orig = #{orig};\nint insert = #{insert};\nint andd = #{andd};\nprintf(\"%d\\n\", andd);"
     end
 
     def type3
@@ -52,7 +56,9 @@ class Tests
 	
 	number = rand(5..10)
 	
-	left = "i | (1<<#{i})"
+	left = "i | (1<<#{number})"
+	
+	input = "int i = #{i};\nint left = #{left};\nprintf(\"%d\\n\", left);"
 	
     end
 
@@ -67,6 +73,8 @@ class Tests
 	value2.generate_random_hex_long
 	
 	result = "(value1 << #{shift1}) ^ (value2 >> #{shift2})"
+	
+	input = "long value1 = #{value1};\nlong value2 = #{value2};\nlong result = #{result};\nprintf(\"%d\\n\", result);"
 
     end
 
@@ -78,6 +86,8 @@ class Tests
 	shift2 = rand(2..3)
 	
 	result = "(value1 << #{shift1}) ^ (value2 >> #{shift2})"
+	
+	input = "int value1 = #{value1};\nint value2 = #{value2};\n int result = #{result};\nprintf(\"%d\\n\", result);"
     end
 
     def type6
@@ -87,6 +97,7 @@ class Tests
 	shift = rand(2..4)
 	
 	if_test = "if(testValue & (1 << #{shift}))"
+	input = "long testValue = {testValue};\nint a = 0;\n#{if_test}{a = 1;}\nelse{a = 2;}\nprintf(\"%d\\n\", a);"
     end
 
     def type7
@@ -96,6 +107,8 @@ class Tests
 	shift = rand(2..4)
 
 	if_test = "if((result = testValue & testValue ^ testValue | (1 << #{shift})))"
+	
+	input = "long testValue = {testValue};\nint a = 0;\nint result = 0;\n#{if_test}{a = 1;}\nelse{a = 2;}\nprintf(\"%d\\n\", a);"
     end
 
 end

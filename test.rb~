@@ -27,6 +27,8 @@ class Tests
 	insert.generate_random_hex
 	
 	a = "orig | (insert << #{shift})"
+	
+	input = "int orig = #{orig};\nint insert = #{insert};\nint a = #{a};\nprintf(\"%d\\n\", a);"
 
     end
 
@@ -39,11 +41,13 @@ class Tests
 	insert = Generator.new()
 	insert.generate_random_hex
 	
-	a = orig | (insert << #{shift})
+	a = "orig | (insert << #{shift})"
 	
-	b = orig | (insert << #{shift})
+	b = "orig | (insert << #{shift})"
 	
 	andd = "a & b"
+	
+	input = "int orig = #{orig};\nint insert = #{insert};\nint andd = #{andd};\nprintf(\"%d\\n\", andd);"
     end
 
     def type3
@@ -52,7 +56,9 @@ class Tests
 	
 	number = rand(5..10)
 	
-	left = "i | (1<<#{i})"
+	left = "i | (1<<#{number})"
+	
+	input = "int i = #{i};\nint left = #{left};\nprintf(\"%d\\n\", left);"
 	
     end
 
