@@ -1,4 +1,3 @@
 TP-tests
 ========
-Alexander Iliev 11b
-Dimitar Velev 11b
+Made by: Alexander Iliev 11b & Dimitar Velev 11b
