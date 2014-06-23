@@ -1,4 +1,5 @@
 load "numgen.rb"
+load "writter.rb"
 
 class Tests
 
@@ -18,48 +19,47 @@ class Tests
     end
 
     def type1
+    	orig = Generator.new()
+    	orig.generate_random_hex
 
-	orig = Generator.new()
-	orig.generate_random_hex
-	
-	shift = rand(6...8)
-	
-	insert = Generator.new()
-	insert.generate_random_hex
-	
-	a = "orig | (insert << #{shift})"
-	
-	input = "int orig = #{orig};\nint insert = #{insert};\nint a = #{a};\nprintf(\"%d\\n\", a);"
+    	shift = rand(6...8)
+
+    	insert = Generator.new()
+    	insert.generate_random_hex
+
+    	a = "orig | (insert << #{shift})"
+
+    	input = "int orig = #{orig};\nint insert = #{insert};\nint a = #{a};\nprintf(\"%d\\n\", a);"
     end
 
     def type2
     	orig = Generator.new()
-	orig.generate_random_hex
-	
-	shift = rand(6...8)
-	
-	insert = Generator.new()
-	insert.generate_random_hex
-	
-	a = "orig | (insert << #{shift})"
-	
-	b = "orig | (insert << #{shift})"
-	
-	andd = "a & b"
-	
-	input = "int orig = #{orig};\nint insert = #{insert};\nint andd = #{andd};\nprintf(\"%d\\n\", andd);"
+    	orig.generate_random_hex
+
+    	shift = rand(6...8)
+
+    	insert = Generator.new()
+    	insert.generate_random_hex
+
+    	a = "orig | (insert << #{shift})"
+
+    	b = "orig | (insert << #{shift})"
+
+    	andd = "a & b"
+
+    	input = "int orig = #{orig};\nint insert = #{insert};\nint andd = #{andd};\nprintf(\"%d\\n\", andd);"
     end
 
     def type3
-	i=Generator.new()
-	i.generate_random_hex
-	
-	number = rand(5..10)
-	
-	left = "i | (1<<#{number})"
-	
-	input = "int i = #{i};\nint left = #{left};\nprintf(\"%d\\n\", left);"
-	
+    	i=Generator.new()
+    	i.generate_random_hex
+
+    	number = rand(5..10)
+
+    	left = "i | (1<<#{number})"
+
+    	input = "int i = #{i};\nint left = #{left};\nprintf(\"%d\\n\", left);"
+
     end
 
     def type4
@@ -68,26 +68,26 @@ class Tests
 
     	shift1 = rand(2..3)
 
-	shift2 = rand(2..3)
-	
+	   shift2 = rand(2..3)
+
     	value2=Generator.new()
-	value2.generate_random_hex_long
-	
-	result = "(value1 << #{shift1}) ^ (value2 >> #{shift2})"
-	
-	input = "long value1 = #{value1};\nlong value2 = #{value2};\nlong result = #{result};\nprintf(\"%d\\n\", result);"
+    	value2.generate_random_hex_long
+
+    	result = "(value1 << #{shift1}) ^ (value2 >> #{shift2})"
+
+    	input = "long value1 = #{value1};\nlong value2 = #{value2};\nlong result = #{result};\nprintf(\"%d\\n\", result);"
     end
 
     def type5
     	value1 = rand(100..600)
     	value2 = rand(100..600)
 
-	shift1 = rand(2..3)
-	shift2 = rand(2..3)
-	
-	result = "(value1 << #{shift1}) ^ (value2 >> #{shift2})"
-	
-	input = "int value1 = #{value1};\nint value2 = #{value2};\n int result = #{result};\nprintf(\"%d\\n\", result);"
+    	shift1 = rand(2..3)
+    	shift2 = rand(2..3)
+
+    	result = "(value1 << #{shift1}) ^ (value2 >> #{shift2})"
+
+    	input = "int value1 = #{value1};\nint value2 = #{value2};\n int result = #{result};\nprintf(\"%d\\n\", result);"
     end
 
     def type6
@@ -96,10 +96,10 @@ class Tests
 
     	shift = rand(2..4)
 
-	shift = rand(2..4)
-	
-	if_test = "if(testValue & (1 << #{shift}))"
-	input = "long testValue = {testValue};\nint a = 0;\n#{if_test}{a = 1;}\nelse{a = 2;}\nprintf(\"%d\\n\", a);"
+    	shift = rand(2..4)
+
+    	if_test = "if(testValue & (1 << #{shift}))"
+    	input = "long testValue = {testValue};\nint a = 0;\n#{if_test}{a = 1;}\nelse{a = 2;}\nprintf(\"%d\\n\", a);"
     end
 
     def type7
@@ -108,9 +108,9 @@ class Tests
 
     	shift = rand(2..4)
 
-	if_test = "if((result = testValue & testValue ^ testValue | (1 << #{shift})))"
-	
-	input = "long testValue = {testValue};\nint a = 0;\nint result = 0;\n#{if_test}{a = 1;}\nelse{a = 2;}\nprintf(\"%d\\n\", a);"
+    	if_test = "if((result = testValue & testValue ^ testValue | (1 << #{shift})))"
+
+    	input = "long testValue = {testValue};\nint a = 0;\nint result = 0;\n#{if_test}{a = 1;}\nelse{a = 2;}\nprintf(\"%d\\n\", a);"
     end
 
 end
