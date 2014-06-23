@@ -28,7 +28,7 @@ class C_writer
     end
 
     def run_file
-        system("gcc test.c");
+        system("gcc test.c -w");
         system("./a.out >> tests/test_#{@test_number}_results.txt");
     end
 

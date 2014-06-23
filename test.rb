@@ -21,6 +21,7 @@ class Tests
         type7 #10
         type5 #11
         type5 #12
+        clean
     end
 
     def type1
@@ -127,6 +128,10 @@ class Tests
 
         @compiler.set_code(input)
         @compiler.lock_n_load
+    end
+
+    def clean
+        system("rm test.c a.out")
     end
 
 end
