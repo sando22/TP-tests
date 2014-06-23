@@ -1,24 +1,51 @@
-p a = ARGV[0]
-p b = ARGV[1]
-File.open("hello.c", "w") do |file|
-   file << "
-   #include<stdio.h>
+load "numgen.rb"
 
-   int main(){
-   int res = #{a}|#{b};
-   printf(\"Result = %#0x\",res);
+#pruc = Generator.new()
+#print pruc.generate_random_hex
 
+class Tests
 
-   return 0;
-   }
-   "
+    def test_generator
+        type1 #1
+        type1 #2
+        type2 #3
+        type2 #4
+        type2 #5
+        type3 #6
+        type4 #7
+        type5 #8
+        type6 #9
+        type7 #10
+        type5 #11
+        type5 #12
+    end
+
+    def type1
+
+    end
+
+    def type2
+
+    end
+
+    def type3
+
+    end
+
+    def type4
+
+    end
+
+    def type5
+
+    end
+
+    def type6
+
+    end
+
+    def type7
+
+    end
+
 end
-
-
-hello = system("gcc hello.c && ./a.out")
-
-
-print(hello.to_s.gsub("true",""))
-print("\n")
-
-system("rm hello.c a.out")
