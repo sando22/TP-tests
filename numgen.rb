@@ -8,9 +8,9 @@ class Generator
 
         return a
     end
-    
+
     def generate_random_hex_long
-	a = "0x" << SecureRandom.hex(4)
+        a = "0x" << SecureRandom.hex(4)
         print "chislo ", a, "\n"
 
         return a
