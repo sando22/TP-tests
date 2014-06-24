@@ -8,7 +8,7 @@ class Tests
         @compiler = C_writer.new(id)
         @generator = Generator.new(dif_mode)
     end
-    
+
     def tests_generator
         type1 #1
         type1 #2
@@ -134,7 +134,6 @@ class Tests
     def clean
         system("rm test.c a.out")
         @compiler.html_generate
-        @compiler.html_generate_results
     end
 
 end

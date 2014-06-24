@@ -39,15 +39,11 @@ class C_writer
             file << "\n\n"
         end
     end
-    
+
     def html_generate
     	c = Html.new(@test_number)
     	c.generate_html
-    end
-    
-    def html_generate_results
-    	b = Html.new(@test_number)
-    	b.generate_html_results
+        c.generate_html_results
     end
 
 end

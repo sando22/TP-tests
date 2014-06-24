@@ -3,8 +3,8 @@ load "writer.rb"
 class Html
 	def initialize(number)
 		@test_number = number
-	end	
-	
+	end
+
 	def generate_html
 		file_name = "tests/test_#{@test_number}_html.html"
 		gosho = File.open(File.expand_path(file_name), "w")
@@ -24,10 +24,10 @@ class Html
 		gosho.close
 		end
 	end
-	
+
 	def generate_html_results
 		counter = 1
-		file_name = "tests/test_#{@test_number}_html_results.html"
+		file_name = "tests/test_#{@test_number}_results_html.html"
 		gosho = File.open(File.expand_path(file_name), "w")
 		gosho.puts "<html><body>"
 		gosho.puts "<div>"
