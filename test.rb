@@ -3,9 +3,9 @@ load "writer.rb"
 
 class Tests
 
-    def initialize(id)
+    def initialize(id,dif_mode)
         @compiler = C_writer.new(id)
-        @generator = Generator.new()
+        @generator = Generator.new(dif_mode)
     end
 
     def tests_generator
@@ -27,7 +27,7 @@ class Tests
     def type1
     	orig = @generator.generate_random_hex
 
-    	shift = rand(6...9)
+    	shift = rand(6...8)
 
     	insert = @generator.generate_random_hex
 
@@ -42,7 +42,7 @@ class Tests
     def type2
     	orig = @generator.generate_random_hex
 
-    	shift = rand(6...9)
+    	shift = rand(6...8)
 
     	insert = @generator.generate_random_hex
 
@@ -61,7 +61,7 @@ class Tests
     def type3
     	i = @generator.generate_random_hex
 
-    	number = rand(5..11)
+    	number = rand(5..10)
 
     	left = "i | (1<<#{number})"
 
@@ -76,7 +76,7 @@ class Tests
 
     	shift1 = rand(2..3)
 
-	   shift2 = rand(2..3)
+        shift2 = rand(2..3)
 
     	value2 = @generator.generate_random_hex_long
 
@@ -137,12 +137,23 @@ class Tests
 end
 
 tests_to_do = ARGV[0]
+tests_difficulty = ARGV[1]
+
+`rm -rf tests`
+`mkdir tests`
+
 
 if tests_to_do == nil
     tests_to_do = 1
 end
 
+if tests_difficulty == "hard"
+    tests_difficulty = 1
+else
+    tests_difficulty = 0
+end
+
 tests_to_do.to_i.times do |current|
-    going_test = Tests.new(current+1)
+    going_test = Tests.new(current+1, tests_difficulty)
     going_test.tests_generator
 end

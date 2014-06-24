@@ -39,4 +39,5 @@ class C_writer
             file << "\n\n"
         end
     end
+
 end
