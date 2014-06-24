@@ -1,5 +1,6 @@
 load "numgen.rb"
 load "writer.rb"
+load "html_generator.rb"
 
 class Tests
 
@@ -7,7 +8,7 @@ class Tests
         @compiler = C_writer.new(id)
         @generator = Generator.new(dif_mode)
     end
-
+    
     def tests_generator
         type1 #1
         type1 #2
@@ -132,6 +133,7 @@ class Tests
 
     def clean
         system("rm test.c a.out")
+        @compiler.html_generate
     end
 
 end
@@ -141,6 +143,7 @@ tests_difficulty = ARGV[1]
 
 `rm -rf tests`
 `mkdir tests`
+
 
 
 if tests_to_do == nil

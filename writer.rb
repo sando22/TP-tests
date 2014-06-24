@@ -39,5 +39,10 @@ class C_writer
             file << "\n\n"
         end
     end
+    
+    def html_generate
+    	c = Html.new(@test_number)
+    	c.generate_html
+    end
 
 end
