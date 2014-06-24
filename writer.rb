@@ -44,5 +44,10 @@ class C_writer
     	c = Html.new(@test_number)
     	c.generate_html
     end
+    
+    def html_generate_results
+    	b = Html.new(@test_number)
+    	b.generate_html_results
+    end
 
 end

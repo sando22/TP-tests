@@ -134,6 +134,7 @@ class Tests
     def clean
         system("rm test.c a.out")
         @compiler.html_generate
+        @compiler.html_generate_results
     end
 
 end
